@@ -1,34 +1,129 @@
-Instructions
+# Paul’s Exotic Animal Menagerie
+*A React-based interactive pet dashboard*
 
-Fork this repository to your own GitHub account.
+This repository contains a small React application that displays three animal profiles in a kennel-style dashboard. Each profile card includes basic animal info and a button that cycles the animal’s mood, updating both the mood text and the displayed image.
 
-Setup: Open your terminal in the project folder and run npm install.
+---
 
-Coding Task:
+## What the user sees
 
-State: In App.jsx (Class Component), initialize your state using the data from data.js.
+- A pale pink, full-screen page with a centered header: **Paul’s Exotic Animal Menagerie**
+- Three animal “cards” shown in a centered 3-column layout
+- Each card shows:
+  - Name
+  - Species
+  - Breed
+  - Age
+  - Gender
+  - Life Expectancy
+  - Mood
+  - An image that changes with mood
+- Clicking the button cycles:
 
-Mapping: Use .map() to render at least two ChildComponent cards.
+**Happy → Angry → Lonely → Happy**
 
-Events: Implement a method in the Parent to change a child's image/status. Pass this method to the Child via props.
+Button labels cycle with the mood:
+- Happy → **Make Angry**
+- Angry → **Feed Treat**
+- Lonely → **Give Hug**
 
-Child Logic: Complete ChildComponent.jsx to display the props and trigger the parent's method on button click.
+---
 
-Why Vite?
+## Tech Stack
 
-We are using Vite instead of the deprecated Create React App.
+- React (Class Components)
+- Node.js + npm
+- ES6 JavaScript
+- CSS Grid / Flexbox (inline styling)
+- Git / GitHub for version control
 
-Files: Ensure your components use the .jsx extension.
+---
 
-Speed: You'll notice the development server starts almost instantly.
+## Project Structure
 
-How to Run
+```
+src/
+ ├── App.jsx               # Parent component (state + layout control)
+ ├── childComponent.jsx    # Individual animal card
+ ├── data.js               # Static pet data and image imports
+ └── assets/               # Mood-based images for each animal
+```
 
-Local Development
+---
 
-Run the following command to start the Vite dev server:
+## How It Works
 
-npm run dev
+The application follows a simple React data flow:
 
+1. `App.jsx` stores the list of animals in state.
+2. Each animal starts with:
+   ```
+   curImg = 0
+   curMood = 0
+   ```
+3. Clicking a button in `childComponent.jsx` triggers a callback to the parent.
+4. The parent updates the selected animal using `.map()` and returns a new object:
+   ```js
+   return { ...pet, curImg: nextValue, curMood: nextValue };
+   ```
+5. React re-renders automatically with the new image and mood text.
 
-Note: Vite defaults to port 5173. Check your terminal output for the local URL.
+This demonstrates React’s **unidirectional data flow** and immutable state updates.
+
+---
+
+## Installation & Running Locally
+
+### 1. Clone the repository
+```bash
+git clone <your-repository-url>
+cd petKennel
+```
+
+### 2. Install dependencies
+```bash
+npm install
+```
+
+### 3. Start the development server
+```bash
+npm start
+```
+
+### 4. Open in your browser
+```
+http://localhost:3000
+```
+
+The app will hot-reload automatically when changes are made.
+
+---
+
+## Learning Goals
+
+This exercise demonstrates:
+
+- Building UI with React class components
+- Passing data via props
+- Managing state without mutation
+- Handling events from child → parent
+- Dynamically rendering assets based on application state
+- Creating a clean, centered layout without external UI frameworks
+
+---
+
+## Attribution
+
+Initial project scaffold adapted from instructional material by  
+**Professor Hakeem Jones, Morehouse College**  
+and modified to implement the Exotic Animal Menagerie dashboard.
+
+---
+
+## Future Improvements (Optional)
+
+- Convert to React functional components + Hooks
+- Add responsive mobile layout
+- Persist pet state using local storage
+- Expand to dynamic data from an API
+

@@ -45,12 +45,12 @@ class App extends Component {
     const pageStyle = {
       minHeight: "100vh",
       background: "#f7d6e6",
-      padding: "32px 28px 44px",
+      padding: "32px 20px 44px",
       color: "#1f1f1f",
     
-      display: "flex",             
+      display: "flex",
       flexDirection: "column",
-      alignItems: "center",         
+      alignItems: "center",        
     };
     
 
@@ -62,15 +62,15 @@ class App extends Component {
     };
 
     const gridStyle = {
-      width: "100%",             
+      width: "100%",
+      maxWidth: "1100px",     
       marginTop: "26px",
     
       display: "grid",
-      gridTemplateColumns: "repeat(3, 1fr)",  
-      gap: "22px",
+      gridTemplateColumns: "repeat(3, 1fr)",
+      gap: "40px",           
     
-      justifyItems: "center",       
-      alignItems: "start",
+      justifyItems: "center",
     };
     
 
