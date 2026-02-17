@@ -36,20 +36,19 @@ class ChildComponent extends React.Component {
       "Lonely";
 
     return (
-      <div>
+      <div style={{textAlign: "center"}}>
         <h2>{this.props.name}</h2>
 
         <p><strong>Species:</strong> {this.props.species}</p>
         <p><strong>Breed:</strong> {this.props.breed}</p>
         <p><strong>Age:</strong> {this.props.age}</p>
+        <p><strong>Gender:</strong> {this.props.gender}</p>
         <p><strong>Life Expectancy:</strong> {this.props.lifeExpectancy}</p>
         <p><strong>Mood:</strong> {moodText}</p>
-
-        console.log("petImg:", this.props.petImg);
         <img
           src={this.props.petImg[this.props.curImg]}
           alt={this.props.name}
-          width="250"
+          style={{ width: "250px", maxWidth: "100%", display: "block", margin: "0 auto" }}
         />
 
         <br />

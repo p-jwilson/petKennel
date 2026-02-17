@@ -47,7 +47,12 @@ class App extends Component {
       background: "#f7d6e6",
       padding: "32px 28px 44px",
       color: "#1f1f1f",
+    
+      display: "flex",             
+      flexDirection: "column",
+      alignItems: "center",         
     };
+    
 
     const titleStyle = {
       margin: 0,
@@ -57,12 +62,17 @@ class App extends Component {
     };
 
     const gridStyle = {
-      width: "min(1200px, 100%)",
-      margin: "26px auto 0",
+      width: "100%",             
+      marginTop: "26px",
+    
       display: "grid",
-      gridTemplateColumns: "repeat(3, 1fr)",
+      gridTemplateColumns: "repeat(3, 1fr)",  
       gap: "22px",
+    
+      justifyItems: "center",       
+      alignItems: "start",
     };
+    
 
     return (
       <div style={pageStyle}>
@@ -79,6 +89,7 @@ class App extends Component {
               id={char.id}
               name={char.name}
               age={char.age}
+              gender={char.gender}
               lifeExpectancy={char.lifeExpectancy}
               species={char.species}
               breed={char.breed}
