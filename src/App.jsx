@@ -1,55 +1,93 @@
 import React, { Component } from 'react';
-import ChildComponent from './ChildComponent';
+import ChildComponent from './childComponent';
 import { initialData } from './data';
 
 class App extends Component {
   constructor(props) {
     super(props);
-    
-    // TODO: Initialize state here
-    // this.state = {
-    //   characters: initialData
-    // };
+
+    this.state = {
+      characters: initialData.map((a) => ({
+        ...a,
+        curImg: 0,
+        curMood: 0,
+      })),
+    };
   }
 
-  // Method to handle state changes from children
   handleUpdate = (id) => {
     console.log("Parent received event for ID:", id);
-    // TODO: Logic to update the specific child in this.state
-    // 1. Find the character in state by id
-    // 2. Change their image property (e.g., to a 'happy' version)
-    // 3. Update state using this.setState()
-    
-    /* HINT for students: 
-    const updatedCharacters = this.state.characters.map(char => {
-      if(char.id === id) {
-         return { ...char, image: 'NEW_IMAGE_URL', status: 'Updated!' };
+
+    const updatedCharacters = this.state.characters.map((pet) => {
+      if (pet.id === id) {
+        return {
+          ...pet,
+
+          curImg:
+            pet.curImg === 0 ? 1 :
+            pet.curImg === 1 ? 2 :
+            0,
+
+          curMood:
+            pet.curMood === 0 ? 1 :
+            pet.curMood === 1 ? 2 :
+            0
+        };
       }
-      return char;
+      return pet;
     });
+
     this.setState({ characters: updatedCharacters });
-    */
-  }
+  };
 
   render() {
+
+    const pageStyle = {
+      minHeight: "100vh",
+      background: "#f7d6e6",
+      padding: "32px 28px 44px",
+      color: "#1f1f1f",
+    };
+
+    const titleStyle = {
+      margin: 0,
+      textAlign: "center",
+      fontFamily: '"Hanalei", system-ui',
+      fontSize: "48px",
+    };
+
+    const gridStyle = {
+      width: "min(1200px, 100%)",
+      margin: "26px auto 0",
+      display: "grid",
+      gridTemplateColumns: "repeat(3, 1fr)",
+      gap: "22px",
+    };
+
     return (
-      <div className="app-container" style={{ padding: '40px', fontFamily: 'Arial, sans-serif' }}>
-        <h1>Parent Component (Class-Based)</h1>
-        
-        <div className="children-container" style={{ display: 'flex', gap: '20px', marginTop: '20px' }}>
-          {/* TODO: Map through your state characters here and render ChildComponents */}
-          {/* Example: 
-              {this.state && this.state.characters.map(char => (
-                <ChildComponent 
-                  key={char.id}
-                  id={char.id}
-                  name={char.name}
-                  image={char.image}
-                  status={char.status}
-                  onAction={this.handleUpdate}
-                />
-              ))} 
-          */}
+      <div style={pageStyle}>
+        <style>{`
+          @import url('https://fonts.googleapis.com/css2?family=Hanalei&display=swap');
+        `}</style>
+
+        <h1 style={titleStyle}>Paul&apos;s Exotic Animal Menagerie</h1>
+
+        <div style={gridStyle}>
+          {this.state.characters.map((char) => (
+            <ChildComponent
+              key={char.id}
+              id={char.id}
+              name={char.name}
+              age={char.age}
+              lifeExpectancy={char.lifeExpectancy}
+              species={char.species}
+              breed={char.breed}
+              petImg={char.petImg}
+              curImg={char.curImg}
+              curMood={char.curMood}
+              onAction={this.handleUpdate}
+            />
+          ))}
         </div>
       </div>
     );
@@ -57,3 +95,4 @@ class App extends Component {
 }
 
 export default App;
+

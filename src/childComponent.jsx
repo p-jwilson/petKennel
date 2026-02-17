@@ -1,27 +1,67 @@
 import React from 'react';
 
-// TODO: Destructure the props you need here (header, image, etc.)
 class ChildComponent extends React.Component {
 
   constructor(props) {
-   // todo add bindings etc to inititalize component and funcs 
-   super(props);
+    super(props);
+    this.handleButtonClick = this.handleButtonClick.bind(this);
   }
-  
-  render(){
-   return (
-    <div className="child-card">
-      {/* TODO: 
-        1. Add an <h2> for the header text 
-        2. Add an <img> tag for the image
-        3. Add a <p> tag for the content
-        4. Add a <button> that fires the click event
-      */}
-      
-      <button>Click Me</button>
-    </div>
-  );
- }
+
+  handleButtonClick() {
+    this.props.onAction(this.props.id);
+  }
+
+  render() {
+
+    let btnText = "";
+
+    switch (this.props.curImg) {
+      case 0:
+        btnText = "Make Angry";
+        break;
+      case 1:
+        btnText = "Feed Treat";
+        break;
+      case 2:
+        btnText = "Give Hug";
+        break;
+      default:
+        btnText = "Make Angry";
+        break;
+    }
+
+    const moodText =
+      this.props.curMood === 0 ? "Happy" :
+      this.props.curMood === 1 ? "Angry" :
+      "Lonely";
+
+    return (
+      <div>
+        <h2>{this.props.name}</h2>
+
+        <p><strong>Species:</strong> {this.props.species}</p>
+        <p><strong>Breed:</strong> {this.props.breed}</p>
+        <p><strong>Age:</strong> {this.props.age}</p>
+        <p><strong>Life Expectancy:</strong> {this.props.lifeExpectancy}</p>
+        <p><strong>Mood:</strong> {moodText}</p>
+
+        console.log("petImg:", this.props.petImg);
+        <img
+          src={this.props.petImg[this.props.curImg]}
+          alt={this.props.name}
+          width="250"
+        />
+
+        <br />
+
+        <button onClick={this.handleButtonClick}>
+          {btnText}
+        </button>
+      </div>
+    );
+  }
 }
 
 export default ChildComponent;
+
+
