@@ -36,7 +36,7 @@ class ChildComponent extends React.Component {
       "Lonely";
 
     return (
-      <div style={{textAlign: "center"}}>
+      <div style={{ width: "100%", maxWidth: "280px", textAlign: "center" }}>
         <h2>{this.props.name}</h2>
 
         <p><strong>Species:</strong> {this.props.species}</p>

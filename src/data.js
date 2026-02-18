@@ -20,7 +20,6 @@ export const initialData = [
     species: "Dog",
     breed: "Golden Retriever",
     petImg: [happyDog, angryDog, lonelyDog],
-    mood: ["Happy", "Angry", "Lonely"],
   },
   {
     id: 2,
@@ -31,7 +30,6 @@ export const initialData = [
     species: "Turtle",
     breed: "Red-Eared Slider",
     petImg: [happyTurtle, angryTurtle, lonelyTurtle],
-    mood: ["Happy", "Angry", "Lonely"],
   },
   {
     id: 3,
@@ -42,6 +40,5 @@ export const initialData = [
     species: "Parrot",
     breed: "Budgerigar (Parakeet)",
     petImg: [happyBird, angryBird, lonelyBird],
-    mood: ["Happy", "Angry", "Lonely"],
   },
 ];
