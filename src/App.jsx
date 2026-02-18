@@ -63,12 +63,13 @@ class App extends Component {
 
     const gridStyle = {
       width: "100%",
-      maxWidth: "1100px",     
+      maxWidth: "1100px",
       marginTop: "26px",
     
       display: "grid",
-      gridTemplateColumns: "repeat(3, 1fr)",
-      gap: "40px",           
+      gap: "40px",
+    
+      gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
     
       justifyItems: "center",
     };
