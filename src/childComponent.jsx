@@ -36,7 +36,7 @@ class ChildComponent extends React.Component {
       "Lonely";
 
     return (
-      <div style={{ width: "100%", maxWidth: "280px", textAlign: "center" }}>
+      <div style={{ width: "280px", textAlign: "center" }}>
         <h2>{this.props.name}</h2>
 
         <p><strong>Species:</strong> {this.props.species}</p>
@@ -48,7 +48,13 @@ class ChildComponent extends React.Component {
         <img
           src={this.props.petImg[this.props.curImg]}
           alt={this.props.name}
-          style={{ width: "250px", maxWidth: "100%", display: "block", margin: "0 auto" }}
+          style={{
+            width: "100%",
+            height: "250px",
+            objectFit: "cover",
+            display: "block",
+            margin: "0 auto"
+          }}
         />
 
         <br />

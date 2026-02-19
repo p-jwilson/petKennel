@@ -66,12 +66,13 @@ class App extends Component {
       maxWidth: "1100px",
       marginTop: "26px",
     
-      display: "grid",
+      display: "flex",
+      flexWrap: "wrap",
+      justifyContent: "center",
+      alignItems: "flex-start",
       gap: "40px",
     
-      gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-    
-      justifyItems: "center",
+      boxSizing: "border-box",
     };
     
 
